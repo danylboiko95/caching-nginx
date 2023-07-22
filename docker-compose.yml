@@ -1,0 +1,20 @@
+version: "3.4"
+
+services:
+  nginx-default-server:
+    image: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./servers/default-server:/etc/nginx/conf.d
+      - ./images:/usr/share/nginx/html/images
+
+  nginx-cache-server:
+    build:
+      dockerfile: ./servers/nginx-cache-server/Dockerfile
+      context: .
+    ports:
+      - "80:80"
+    volumes:
+      - ./servers/nginx-cache-server/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - ./cache:/var/cache/nginx/cache
