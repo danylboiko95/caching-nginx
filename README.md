@@ -23,7 +23,7 @@ Please note that purging the cache is an important operation and should be done 
 3. Start the Nginx server with cache enabled:
 
    ```
-   nginx -p . -c nginx.conf
+   docker-compose up
    ```
 
 4. Access your Nginx server using the appropriate URL and port number.
